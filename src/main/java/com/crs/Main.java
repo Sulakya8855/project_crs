@@ -21,9 +21,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
-        AuthenticationService authService = new AuthenticationService();
-        String username = "testuser";
-        String password = "password";
+
+        /*AuthenticationService authService = new AuthenticationService();
+        String username = "testuser1";
+        String password = "password1";
 
         // Register the user with a hashed password
         try {
@@ -49,6 +50,6 @@ public class Main extends Application {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             // Handle error
-        }
+        }*/
     }
 }
