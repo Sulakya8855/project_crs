@@ -54,23 +54,24 @@ public class LoginController {
     @FXML
     private void showRegister() {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/register.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/crs/register-view.fxml")));
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (Exception e) {
             errorLabel.setText("Error loading registration page");
+            System.out.println("Error loading registration page: " + e.getMessage());
         }
     }
 
     private void loadAdminDashboard() {
-        // TODO: Implement admin dashboard loading
+        System.out.println("Loading admin dashboard");
     }
 
     private void loadFacultyDashboard() {
-        // TODO: Implement faculty dashboard loading
+        System.out.println("Loading faculty dashboard");
     }
 
     private void loadStudentDashboard() {
-        // TODO: Implement student dashboard loading
+        System.out.println("Loading student dashboard");
     }
 }

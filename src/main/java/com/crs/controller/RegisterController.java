@@ -71,7 +71,7 @@ public class RegisterController implements Initializable {
     @FXML
     private void showLogin() {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/login.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/crs/login-view.fxml")));
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(new Scene(root));
         } catch (Exception e) {
