@@ -1,20 +1,23 @@
 package com.crs;
 
-import com.crs.dao.StudentDAO;
-import com.crs.model.Student;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+import java.io.IOException;
+
+public class Main extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public static void main(String[] args) {
-        Student student = new Student();
-        student.setName("John Doe1");
-        student.setDob("2000-05-21");
-        student.setProgram("Computer Science");
-        student.setYear(3);
-        student.setContactInfo("johndoe@gmail.com");
-
-        StudentDAO studentDAO = new StudentDAO();
-        studentDAO.saveStudent(student);
-
-        System.out.println("Student saved successfully!");
+        launch();
     }
 }
