@@ -1,4 +1,4 @@
-package com.crs.project_crs;
+package com.crs;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
