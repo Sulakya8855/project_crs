@@ -21,6 +21,8 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
+//        loadStudentDashboard();
+
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
 
@@ -65,6 +67,7 @@ public class LoginController {
 
     private void loadAdminDashboard() {
         System.out.println("Loading admin dashboard");
+
     }
 
     private void loadFacultyDashboard() {
@@ -73,5 +76,20 @@ public class LoginController {
 
     private void loadStudentDashboard() {
         System.out.println("Loading student dashboard");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/crs/student-dashboard-view.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            StudentDashboardController controller = loader.getController();
+//            controller.setStudent(authService.getCurrentUser());
+
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setMaximized(true);
+
+        } catch (Exception e) {
+            errorLabel.setText("Error loading student dashboard");
+            e.printStackTrace();
+        }
     }
 }
