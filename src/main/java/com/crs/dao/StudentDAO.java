@@ -62,15 +62,4 @@ public class StudentDAO {
             throw new RuntimeException("Error deleting student: " + e.getMessage());
         }
     }
-
-    // Additional query methods
-//    public List<Student> findStudentsByDepartment(String department) {
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//            return session.createQuery("from Student where department = :dept", Student.class)
-//                    .setParameter("dept", department)
-//                    .list();
-//        } catch (Exception e) {
-//            throw new RuntimeException("Error finding students by department: " + e.getMessage());
-//        }
-//    }
 }

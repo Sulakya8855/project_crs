@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox styleClass="container"
+      alignment="CENTER"
+      spacing="15"
+      stylesheets="/styles/style.css"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.crs.controller.RegisterController">
+
+    <padding>
+        <Insets top="50" right="50" bottom="50" left="50"/>
+    </padding>
+
+    <Label styleClass="title" text="Create Account"/>
+
+    <TextField fx:id="usernameField"
+               styleClass="input-field"
+               promptText="Username"/>
+
+    <PasswordField fx:id="passwordField"
+                   styleClass="input-field"
+                   promptText="Password"/>
+
+    <PasswordField fx:id="confirmPasswordField"
+                   styleClass="input-field"
+                   promptText="Confirm Password"/>
+
+    <ComboBox fx:id="roleComboBox"
+              styleClass="input-field"
+              promptText="Select Role"/>
+
+    <Label fx:id="errorLabel"
+           styleClass="error-label"
+           wrapText="true"/>
+
+    <Button text="Register"
+            onAction="#handleRegister"
+            styleClass="button"/>
+
+    <Button text="Back to Login"
+            onAction="#showLogin"
+            styleClass="link-button"/>
+</VBox>
