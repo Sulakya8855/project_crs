@@ -37,15 +37,18 @@ public class AuthenticationService {
 
         switch (currentUser.getRole()) {
             case ADMIN:
-                return true; // Admin has all permissions
+                return true;
             case FACULTY:
                 return operation.startsWith("VIEW_") ||
-                        operation.equals("MANAGE_GRADES") ||
-                        operation.equals("VIEW_COURSE_ROSTER");
+                       operation.equals("MANAGE_GRADES") ||
+                       operation.equals("VIEW_COURSE_ROSTER");
             case STUDENT:
+                if (currentUser.getStudentId() == null) {
+                    return false;
+                }
                 return operation.equals("VIEW_GRADES") ||
-                        operation.equals("VIEW_COURSES") ||
-                        operation.equals("ENROLL_COURSE");
+                       operation.equals("VIEW_COURSES") ||
+                       operation.equals("ENROLL_COURSE");
             default:
                 return false;
         }
@@ -66,16 +69,25 @@ public class AuthenticationService {
         return hashedInput.equals(storedPassword);
     }
 
-    public void registerUser(String username, String password, User.Role role) {
+    public void registerUser(String username, String password, User.Role role, Integer studentId) {
         User existingUser = userDAO.findByUsername(username);
         if (existingUser != null) {
             throw new RuntimeException("Username already exists");
+        }
+
+        // Check if student ID is already registered
+        if (studentId != null) {
+            User existingStudentUser = userDAO.findByStudentId(studentId);
+            if (existingStudentUser != null) {
+                throw new RuntimeException("Student ID is already registered");
+            }
         }
 
         User user = new User();
         user.setUsername(username);
         user.setPassword(hashPassword(password));
         user.setRole(role);
+        user.setStudentId(studentId);
         user.setActive(true);
 
         userDAO.saveUser(user);

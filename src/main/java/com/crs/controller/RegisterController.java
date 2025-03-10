@@ -22,26 +22,36 @@ public class RegisterController implements Initializable {
     @FXML private PasswordField passwordField;
     @FXML private PasswordField confirmPasswordField;
     @FXML private ComboBox<User.Role> roleComboBox;
+    @FXML private TextField studentIdField;
     @FXML private Label errorLabel;
 
     private AuthenticationService authService = new AuthenticationService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Initialize the role combo box
         roleComboBox.getItems().addAll(User.Role.values());
+        
+        // Show/hide student ID field based on role selection
+        roleComboBox.setOnAction(e -> {
+            boolean isStudent = roleComboBox.getValue() == User.Role.STUDENT;
+            studentIdField.setVisible(isStudent);
+            studentIdField.setManaged(isStudent);
+        });
+
+        // Initially hide student ID field
+        studentIdField.setVisible(false);
+        studentIdField.setManaged(false);
     }
 
     @FXML
     private void handleRegister() {
-        // Clear previous error messages
         errorLabel.setText("");
 
-        // Get form values
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
         String confirmPassword = confirmPasswordField.getText().trim();
         User.Role selectedRole = roleComboBox.getValue();
+        String studentIdText = studentIdField.getText().trim();
 
         // Validate input
         if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
@@ -59,10 +69,25 @@ public class RegisterController implements Initializable {
             return;
         }
 
+        // Validate student ID for student role
+        Integer studentId = null;
+        if (selectedRole == User.Role.STUDENT) {
+            if (studentIdText.isEmpty()) {
+                errorLabel.setText("Student ID is required for student registration");
+                return;
+            }
+            try {
+                studentId = Integer.parseInt(studentIdText);
+            } catch (NumberFormatException e) {
+                errorLabel.setText("Invalid Student ID format");
+                return;
+            }
+        }
+
         // Attempt registration
         try {
-            authService.registerUser(username, password, selectedRole);
-            showLogin(); // Return to login page after successful registration
+            authService.registerUser(username, password, selectedRole, studentId);
+            showLogin();
         } catch (Exception e) {
             errorLabel.setText("Registration failed: " + e.getMessage());
         }

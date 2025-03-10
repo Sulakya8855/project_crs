@@ -24,6 +24,7 @@
             <PasswordField fx:id="passwordField" promptText="Password"/>
             <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password"/>
             <ComboBox fx:id="roleComboBox" promptText="Select Role" maxWidth="Infinity"/>
+            <TextField fx:id="studentIdField" promptText="Student ID (for students only)"/>
             <Label fx:id="errorLabel" styleClass="error-label"/>
 
             <HBox spacing="10.0" alignment="CENTER">

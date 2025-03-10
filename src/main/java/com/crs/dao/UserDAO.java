@@ -27,6 +27,11 @@ public class UserDAO {
                 throw new RuntimeException("User with username " + user.getUsername() + " already exists.");
             }
 
+            // Validate student ID for student role
+            if (user.getRole() == User.Role.STUDENT && user.getStudentId() == null) {
+                throw new IllegalArgumentException("Student ID is required for student users");
+            }
+
             session.save(user);
             transaction.commit();
         } catch (Exception e) {
@@ -34,4 +39,17 @@ public class UserDAO {
             throw new RuntimeException("Error saving user: " + e.getMessage());
         }
     }
+
+    public User findByStudentId(Integer studentId) {
+        if (studentId == null) return null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from User where studentId = :studentId", User.class)
+                    .setParameter("studentId", studentId)
+                    .uniqueResult();
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding user by student ID: " + e.getMessage());
+        }
+    }
+
+
 }

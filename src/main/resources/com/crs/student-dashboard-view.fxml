@@ -33,7 +33,9 @@
             <padding>
                 <Insets bottom="20" left="10" right="10" top="20" />
             </padding>
-            <Button maxWidth="Infinity" onAction="#showAvailableCourses" text="Search Courses" />
+            <Button maxWidth="Infinity" onAction="#showAvailableCourses" text="Available Courses" />
+            <Button maxWidth="Infinity" onAction="#showMyEnrollments" text="My Enrollments" />
+            <Button maxWidth="Infinity" onAction="#showTranscript" text="View Transcript" />
             <Button maxWidth="Infinity" onAction="#calculateGPA" text="Calculate GPA" />
         </VBox>
     </left>
