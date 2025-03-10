@@ -60,4 +60,12 @@ public class EnrollmentService {
         enrollmentDAO.saveEnrollment(enrollment);
         return true;
     }
+
+    public int getEnrollmentCount(Course course) {
+        return enrollmentDAO.getEnrollmentCount(course);
+    }
+
+    public List<Enrollment> findEnrollmentsByStudent(Student student) {
+        return enrollmentDAO.findEnrollmentsByStudent(student);
+    }
 }

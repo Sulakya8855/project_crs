@@ -17,4 +17,9 @@ module com.crs {
     opens com.crs.model to org.hibernate.orm.core;
     // And your DAO classes if needed
     opens com.crs.dao to org.hibernate.orm.core;
+
+    exports com.crs.controller;
+    exports com.crs.model;
+
+    opens com.crs.controller to javafx.fxml;
 }
