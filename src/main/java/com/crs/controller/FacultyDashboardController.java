@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -43,6 +44,7 @@ public class FacultyDashboardController {
     public void initData(User user) {
         this.currentUser = user;
         facultyNameLabel.setText("Faculty Dashboard");
+        facultyNameLabel.setTextFill(Color.web("#a4bcd5"));
         welcomeUsernameText.setText(user.getUsername());
         showMyCourses();
     }

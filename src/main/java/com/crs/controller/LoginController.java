@@ -74,8 +74,19 @@ public class LoginController {
     }
 
     private void loadAdminDashboard() {
-        System.out.println("Loading admin dashboard");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/crs/admin-dashboard-view.fxml"));
+            Scene scene = new Scene(loader.load());
 
+            AdminDashboardController controller = loader.getController();
+            controller.initData(authService.getCurrentUser());
+
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (Exception e) {
+            errorLabel.setText("Error loading admin dashboard");
+            e.printStackTrace();
+        }
     }
 
     private void loadFacultyDashboard() {
@@ -88,7 +99,6 @@ public class LoginController {
 
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(scene);
-            stage.setMaximized(true);
         } catch (Exception e) {
             errorLabel.setText("Error loading faculty dashboard");
             e.printStackTrace();
@@ -105,7 +115,6 @@ public class LoginController {
 
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.setScene(scene);
-            stage.setMaximized(true);
         } catch (Exception e) {
             errorLabel.setText("Error loading student dashboard");
             e.printStackTrace();

@@ -74,3 +74,13 @@
     -fx-text-fill: white;
     -fx-font-size: 14px;
 }
+
+.sidebar-header {
+    -fx-text-fill: #95a5a6;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 5 0;
+    -fx-border-color: transparent transparent #95a5a6 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-margin: 10 0 5 0;
+}
