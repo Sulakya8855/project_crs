@@ -7,6 +7,7 @@ A JavaFX-based academic course registration system for students, faculty, and ad
 - Java Development Kit (JDK) 17 or higher
 - Maven 3.8.x or higher
 - MySQL 8.0 or higher
+- IntelliJ IDEA Professional
 
 ## Setup Instructions
 
@@ -34,6 +35,7 @@ db.password=your_password
 4. Open the `src/main/java/com/crs/Main.java` file (or the main class file of your application).
 5. Right-click on the file and select `Run 'Main.main()'`.
 6. Run `db_dump.sql` inside your database to populate the database with sample data.
+7. If you want to use docker use the docker-compose file to start the database.
 
 The application should now start running.
 
@@ -41,23 +43,19 @@ The application should now start running.
 
 ### For Students
 - Search and view available courses
-- Register for courses
+- View My enrollments
 - Calculate GPA
-- View academic records
+- View Transcript
 
 ### For Faculty
-- View course roster
-- Manage grades
-- View course schedules
+- View course by department
+- View course enrollments
+- Manage Grades
 
 ### For Administrators
-- Manage courses
-- Manage Students
+- **Manage Courses**: Create, update, delete, and retrieve courses.
+- **Manage Students**: Add, update, delete, and retrieve student information.
+- **Manage Academic Records**
+- **Manage Enrollments**
 
-## Dependencies
-
-- JavaFX 17.0.1
-- Hibernate 6.2.0
-- MySQL Connector/J 8.0.33
-- Log4j 2.20.0
 
